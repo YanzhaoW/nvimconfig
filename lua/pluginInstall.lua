@@ -13,15 +13,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     'tpope/vim-surround',
-    {'numToStr/comment.nvim', config = function() require'Comment'.setup {} end,},
-	'nvim-lua/lsp-status.nvim',
-	'nvim-lualine/lualine.nvim',
+    { 'numToStr/comment.nvim', config = function() require 'Comment'.setup {} end, },
+    'nvim-lua/lsp-status.nvim',
+    'nvim-lualine/lualine.nvim',
     'navarasu/onedark.nvim',
-    'nvim-treesitter/nvim-treesitter',
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function() require'telescope'.setup {} end,
+        config = function() require 'telescope'.setup {} end,
     },
     {
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -36,8 +35,8 @@ require("lazy").setup({
     'neovim/nvim-lspconfig',
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-	'nvim-lua/lsp-status.nvim',
-	{ "folke/trouble.nvim" },
+    'nvim-lua/lsp-status.nvim',
+    { "folke/trouble.nvim" },
 
 
     'ahmedkhalf/project.nvim',
