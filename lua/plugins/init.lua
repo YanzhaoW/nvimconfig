@@ -1,0 +1,6 @@
+require 'plugins.treesitter'
+require 'plugins.onedark'
+require 'plugins.lualine'
+require 'plugins.lsp'
+require 'plugins.mason'
+require 'plugins.trouble'
