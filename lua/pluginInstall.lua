@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     'tpope/vim-surround',
     { 'numToStr/comment.nvim', config = function() require 'Comment'.setup {} end, },
-    'nvim-lua/lsp-status.nvim',
     'nvim-lualine/lualine.nvim',
     'navarasu/onedark.nvim',
     {

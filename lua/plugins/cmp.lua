@@ -16,21 +16,24 @@ cmp.setup({
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4)),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4)),
         -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-        ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+        -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     -- Accept currently selected item. If none selected, `select` first item.
-    sources = cmp.config.sources({
+    sources = cmp.config.sources(
+    {
         { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
-    }, {
+    }, 
+    {
         { name = 'buffer' },
-    }),
+        -- { name = 'treesitter'},
+    }
+    ),
+
 })
 
-
 cmp.setup.cmdline {
-    mapping = cmp.mapping.preset.cmdline({
-    })
+    mapping = cmp.mapping.preset.cmdline()
 }
