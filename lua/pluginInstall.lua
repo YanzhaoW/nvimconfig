@@ -30,14 +30,12 @@ require("lazy").setup({
     "nvim-telescope/telescope-file-browser.nvim",
     'tpope/vim-fugitive',
 
-
     -- lsp:
     'neovim/nvim-lspconfig',
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'nvim-lua/lsp-status.nvim',
     { "folke/trouble.nvim" },
-
 
     'ahmedkhalf/project.nvim',
 
