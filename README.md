@@ -65,6 +65,7 @@ If you encounter problems during the usage, please perform the following steps:
 3. Delete the cache files
     ```shell
     rm -rf $HOME/.local/share/nvim
+    rm -rf $HOME/.local/state/nvim
     ```
     and run neovim again.
 
