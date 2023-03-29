@@ -21,6 +21,15 @@ git clone https://github.com/YanzhaoW/nvimconfig.git $HOME/.config/nvim
 ## step 3:
 Open any C++ files and it's ready to go.
 
+## Clangd setup
+
+To fully utilize the clangd, you need to link a file called `compile_commands.json` to the root folder of `R3BRoot` with:
+```sh
+cd ${R3BRoot}
+ln -s ${Build_Dir}/compile_commands.json ./compile_commands.json
+```
+Here `${R3BRoot}` is the root directory path of R3BRoot and ${Build_Dir} is the build directory path of R3BRoot.
+
 ## Important keybindings:
 
 **Normal mode:**
@@ -52,6 +61,7 @@ For the complete information about the keybindings, please visit the github webs
 - [nvim-surround](https://github.com/kylechui/nvim-surround)
 - [comment](https://github.com/numToStr/Comment.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+
 
 ## Troubleshooting
 If you encounter problems during the usage, please perform the following steps:
