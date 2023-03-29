@@ -36,7 +36,7 @@ require("lazy").setup({
     'nvim-lua/lsp-status.nvim',
     { "folke/trouble.nvim" },
 
-    'ahmedkhalf/project.nvim',
+    {'ahmedkhalf/project.nvim', config = function() require 'project_nvim'.setup{} end},
 
     -- cmp:
     {
