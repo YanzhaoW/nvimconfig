@@ -12,6 +12,12 @@ If you want it to be executed automatically, please add it to your .bashrc (in c
 echo "export PATH=\"/u/land/software/neovim/bin:$PATH\"" >> $HOME/.bashrc
 ```
 
+If you want to know whether you have done correctly, please use:
+```sh
+nvim
+```
+You should see the neovim is launched with the command.
+
 ### step 2:
 Pull this repository inside the folder `~/.config/` as `nvim`. Or it can be done with:
 ```shell
@@ -27,7 +33,10 @@ ln -s ${Build_Dir}/compile_commands.json ./compile_commands.json
 Here `${R3BRoot}` is the root directory path of R3BRoot and ${Build_Dir} is the build directory path of R3BRoot.
 
 ### step 4:
-Open any C++ files and it's ready to go.
+Open any C++ files with:
+```sh
+nvim filename.cxx
+```
 
 ## Important keybindings:
 
