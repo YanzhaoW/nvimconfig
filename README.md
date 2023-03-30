@@ -64,7 +64,7 @@ For the complete information about the keybindings, please visit the github webs
 
 
 ## Troubleshooting
-If you encounter problems during the usage, please perform the following steps:
+If you encounter problems during the usage, please try following steps:
 
 1. Restart neovim
 
