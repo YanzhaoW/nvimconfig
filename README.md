@@ -12,7 +12,7 @@ If you want it to be executed automatically, please add it to your .bashrc (in c
 echo "export PATH=\"/u/land/software/neovim/bin:$PATH\"" >> $HOME/.bashrc
 ```
 
-If you want to know whether you have done correctly, please use:
+If you want to know whether you have done it correctly, please use:
 ```sh
 nvim
 ```
