@@ -9,7 +9,7 @@ This command needs to be executed every time when you log in to the GSI server.
 
 If you want it to be executed automatically, please add it to your .bashrc (in case you use bash) with:
 ```shell
-echo "export PATH="/u/land/software/neovim/bin:$PATH" >> $HOME/.bashrc
+echo "export PATH=\"/u/land/software/neovim/bin:$PATH\"" >> $HOME/.bashrc
 ```
 
 ### step 2:
