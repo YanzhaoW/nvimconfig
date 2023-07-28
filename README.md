@@ -47,18 +47,25 @@ Neovim starts to download multiple plugins and language servers. Once they are f
 |-----------------------|-------------------------------------------|
 |   `<Space>ff`         |search file with name                      |                      
 |   `<Space>fg`         |grep in whole project                      |
+|   `<Space>fb`         |show all buffers                           |
+|   `<Space>oo`         |switch between C++ source and header file  |
+|   `<Ctrl-x>`          |toggle file and folder tree on the right   |
 |   `<Space>e`          |show error/warning message                 |
 |   `]d`                |go to next error/warning                   |
 |   `[d`                |go to previous error/warning               |
 |   `<Space>xx`         |toggle error/warning messages window       |
 |   `ga`                |auto fix the code                          |
-|   `K`                 |show hover information                     |
+|   `K` or `<Shift-k>`  |show hover information                     |
 |   `<Space>rn`         |rename variable/class/function             |
 |   `gD`                |go to declaration                          |
 |   `gd`                |go to definition                           |
 |   `<Space>f`          |format the whole file                      |
 |   `<Space>tc`         |toggle autocompletion                      |
 |   `gcc`               |comment the current line                   |
+|   `<Ctrl-l>`          |move the window focus right                |
+|   `<Ctrl-h>`          |move the window focus left                 |
+|   `<Ctrl-j>`          |move the window focus down                 |
+|   `<Ctrl-k>`          |move the window focus up                   |
 
 Some other keybindings can also be found in [keybindings.lua](lua/keybindings.lua).
 
@@ -71,6 +78,17 @@ For the complete information about the keybindings, please visit the github webs
 - [comment](https://github.com/numToStr/Comment.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 
+## Important commands in Vim/NeoVim:
+|   Commands            |       Action                              |
+|-----------------------|-------------------------------------------|
+|   `:bp`               |go to previous buffer                      |                      
+|   `:bd`               |delete current buffer                      |
+|   `:qa`               |quit all windows                           |
+|   `:wa`               |write all windows                          |
+|   `:wqa`              |write and quite all windows                |
+|   `:sp`               |create a new window below                  |
+|   `:vs`               |create a new window on the right           |
+|   `:%s/foo/boo/gc`    |replace 'foo' with 'boo' in this buffer    |
 
 ## Troubleshooting
 If you encounter problems during the usage, please try following steps:
@@ -88,4 +106,10 @@ If you encounter problems during the usage, please try following steps:
     ```
     and run neovim again.
 
+
+If you encounter problems when updating the neovim configs, please go to `~/.config` folder and do:
+```shell
+rm -rf nvim
+git clone https://github.com/YanzhaoW/nvimconfig.git $HOME/.config/nvim
+```
 If you still have problems, please create an [issue](https://github.com/YanzhaoW/nvimconfig/issues) in this github page.
