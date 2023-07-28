@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     'tpope/vim-surround',
     { 'numToStr/comment.nvim', config = function() require 'Comment'.setup {} end, },
+    'nvim-lua/lsp-status.nvim',
     'nvim-lualine/lualine.nvim',
     'navarasu/onedark.nvim',
     {
@@ -28,6 +29,18 @@ require("lazy").setup({
     },
     "nvim-telescope/telescope-file-browser.nvim",
     'tpope/vim-fugitive',
+    'kyazdani42/nvim-tree.lua',
+    'lewis6991/gitsigns.nvim',
+    {
+        'akinsho/git-conflict.nvim',
+        version = '*',
+        config = function()
+            require(
+                'git-conflict').setup()
+        end
+    },
+
+
 
     -- lsp:
     'neovim/nvim-lspconfig',

@@ -9,8 +9,7 @@ local on_attach = function(client, bufnr)
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
-    require'keybindings'.lsp()
-
+    require 'keybindings'.lsp()
 end
 
 require("mason-lspconfig").setup_handlers {
@@ -39,11 +38,25 @@ require("mason-lspconfig").setup_handlers {
             }
         }
     end,
+    ["lua_ls"] = function()
+        nvim_lsp.lua_ls.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                -- capabilities = capabilities,
+                Lua = {
+                    diagnostics = {
+                        globals = { 'vim' }
+                    }
+                },
+            }
+        }
+    end,
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = false,
-        signs = false,
+        signs = true,
     }
 )

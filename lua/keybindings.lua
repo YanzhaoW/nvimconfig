@@ -1,8 +1,6 @@
 local M = {}
 -- leading key:
-vim.g.mapleader = " "
-
-vim.keymap.set('v', '*', [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { noremap = true, silent = true })
+vim.g.mapleader = " " vim.keymap.set('v', '*', [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { noremap = true, silent = true })
 
 -- telescope:
 vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_files() end,
@@ -16,6 +14,12 @@ vim.keymap.set('n', '<leader>fd', function() require('telescope.builtin').diagno
 vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags() end,
     { noremap = true, silent = true })
 vim.keymap.set('n', 'gr', function() require('telescope.builtin').lsp_references() end, { noremap = true, silent = true })
+
+-- window navigation:
+vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 
 -- trouble:
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
@@ -37,6 +41,14 @@ vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
     { silent = true, noremap = true }
 )
 vim.keymap.set('n', 'tc', ':CmpToggle<CR>', { noremap = true, silent = true })
+
+--keybindings for nvimtree:
+vim.keymap.set('n', '<C-x>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>x', ':NvimTreeFocus<CR>')
+vim.keymap.set('i', '<C-x>', '<ESC>:NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<C-x>', '<ESC>:NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>oo', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
+
 
 function M.lsp()
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -60,6 +72,18 @@ function M.lsp()
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format({ async = false }) end, opts)
 
     vim.keymap.set('n', '<leader>oo', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
+end
+
+function M.cmp()
+    local cmp = require 'cmp'
+    return {
+        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4)),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4)),
+        -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }
 end
 
 return M
