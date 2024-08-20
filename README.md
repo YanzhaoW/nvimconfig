@@ -3,13 +3,13 @@
 ### step 1:
 Add the neovim executable to the `PATH` environment:
 ```shell
-export PATH="/u/land/software/neovim/0.9.4/bin:$PATH"
+export PATH="/u/land/software/neovim/latest/bin:$PATH"
 ```
 This command needs to be executed every time when you log in to the GSI server.
 
 If you want it to be executed automatically, please add it to your .bashrc (in case you use bash) with:
 ```shell
-echo "export PATH=\"/u/land/software/neovim/0.9.4/bin:$PATH\"" >> $HOME/.bashrc
+echo "export PATH=\"/u/land/software/neovim/latest/bin:$PATH\"" >> $HOME/.bashrc
 ```
 
 If you want to know whether you have done it correctly, please use:
@@ -61,6 +61,9 @@ Neovim starts to download multiple plugins and language servers. Once they are f
 |   `gd`                |go to definition                           |
 |   `<Space>f`          |format the whole file                      |
 |   `<Space>tc`         |toggle autocompletion                      |
+|   `<Space>ti`         |toggle inlay hints                         |
+|   `<Space>bb`         |go to last buffer                          |
+|   `<Space>[num]`      |go to [num]th buffer                       |
 |   `gcc`               |comment the current line                   |
 |   `<Ctrl-l>`          |move the window focus right                |
 |   `<Ctrl-h>`          |move the window focus left                 |

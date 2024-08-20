@@ -8,6 +8,12 @@ local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+    -- enable inlay_hints
+    if client.server_capabilities.inlayHintProvider then
+        vim.g.inlay_hints_visible = true
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end
+
     -- Mappings.
     require 'keybindings'.lsp()
 end

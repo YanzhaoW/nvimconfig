@@ -13,15 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     'tpope/vim-surround',
-    { 'numToStr/comment.nvim', config = function() require 'Comment'.setup {} end, },
     'nvim-lua/lsp-status.nvim',
     'nvim-lualine/lualine.nvim',
     'navarasu/onedark.nvim',
-    {
-        'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function() require 'telescope'.setup {} end,
-    },
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build =
@@ -31,25 +25,28 @@ require("lazy").setup({
     'tpope/vim-fugitive',
     'kyazdani42/nvim-tree.lua',
     'lewis6991/gitsigns.nvim',
-    {
-        'akinsho/git-conflict.nvim',
-        version = '*',
-        config = function()
-            require(
-                'git-conflict').setup()
-        end
-    },
 
-
+    { 'nvim-telescope/telescope.nvim', opts = {}, dependencies = { 'nvim-lua/plenary.nvim' }, },
+    { 'numToStr/comment.nvim',         opts = {}, },
+    { 'akinsho/git-conflict.nvim',     opts = {}, version = '*', },
+    { 'stevearc/oil.nvim',             opts = {}, },
+    "folke/trouble.nvim",
 
     -- lsp:
     'neovim/nvim-lspconfig',
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'nvim-lua/lsp-status.nvim',
-    { "folke/trouble.nvim" },
 
-    {'ahmedkhalf/project.nvim', config = function() require 'project_nvim'.setup{} end},
+    { 'ahmedkhalf/project.nvim', config = function() require 'project_nvim'.setup {} end },
+    --bufferline
+    {
+        'romgrk/barbar.nvim',
+        init = function() vim.g.barbar_auto_setup = false end,
+        opts = {
+            icons = { filetype = { enabled = false } }
+        }
+    },
 
     -- cmp:
     {

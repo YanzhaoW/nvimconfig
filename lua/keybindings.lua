@@ -1,12 +1,39 @@
 local M = {}
 -- leading key:
-vim.g.mapleader = " " vim.keymap.set('v', '*', [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { noremap = true, silent = true })
+vim.g.mapleader = " "
+vim.keymap.set('v', '*', [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>*', ':noh<Enter>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bb', '<C-^>', { noremap = true, silent = true })
+
+--keybindings for barbar:
+--jumping and reordering of buffers
+vim.keymap.set('n', '<leader>,', ':BufferPrevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>.', ':BufferNext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader><', ':BufferMovePrevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>>', ':BufferMoveNext<CR>', { noremap = true, silent = true })
+-- Goto buffer in position
+vim.keymap.set('n', '<leader>1', ':BufferGoto 1<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>2', ':BufferGoto 2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>3', ':BufferGoto 3<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>4', ':BufferGoto 4<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>5', ':BufferGoto 5<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>6', ':BufferGoto 6<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>7', ':BufferGoto 7<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>8', ':BufferGoto 8<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>9', ':BufferLast<CR>', { noremap = true, silent = true })
+-- Pin/unpin buffer
+vim.keymap.set('n', '<leader>p', ':BufferPin<CR>', { noremap = true, silent = true })
+-- Close buffer
+vim.keymap.set('n', '<leader>cc', ':BufferClose<CR>', { noremap = true, silent = true })
 
 -- telescope:
 vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_files() end,
     { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end,
     { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fG', function() require('telescope.builtin').grep_string() end,
+    { noremap = true, silent = true })
+
 vim.keymap.set('n', '<leader>fb', function() require('telescope.builtin').buffers() end,
     { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>fd', function() require('telescope.builtin').diagnostics() end,
@@ -22,7 +49,7 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 
 -- trouble:
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>",
     { silent = true, noremap = true }
 )
 vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
@@ -72,8 +99,46 @@ function M.lsp()
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format({ async = false }) end, opts)
 
     vim.keymap.set('n', '<leader>oo', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', 'ti', ':InlayToggle<CR>', { noremap = true, silent = true })
 end
 
+-- gitsigns:
+function M.gitsigns(bufnr)
+    local gs = require('gitsigns')
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+
+    local next_hunk = function()
+        if vim.wo.diff then
+            vim.cmd.normal({ ']c', bang = true })
+        else
+            gs.nav_hunk('next')
+        end
+    end
+
+    local last_hunk = function()
+        if vim.wo.diff then
+            vim.cmd.normal({ '[c', bang = true })
+        else
+            gs.nav_hunk('prev')
+        end
+    end
+
+    vim.keymap.set('n', ']c', next_hunk, opts)
+    vim.keymap.set('n', '[c', last_hunk, opts)
+    vim.keymap.set('n', '<leader>hs', gs.stage_hunk)
+    vim.keymap.set('n', '<leader>hS', gs.stage_buffer)
+    vim.keymap.set('n', '<leader>hR', gs.reset_buffer, opts)
+    vim.keymap.set('n', '<leader>hr', gs.reset_hunk)
+    vim.keymap.set('n', '<leader>hp', gs.preview_hunk, opts)
+    vim.keymap.set('n', '<leader>hb', function() gs.blame_line { full = true } end, opts)
+    vim.keymap.set('n', '<leader>hd', gs.diffthis, opts)
+    -- vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end, opts)
+    vim.keymap.set('n', '<leader>td', gs.toggle_deleted, opts)
+    vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame, opts)
+    vim.keymap.set('n', '<leader>ts', gs.toggle_signs, opts)
+end
+
+-- cmp
 function M.cmp()
     local cmp = require 'cmp'
     return {
@@ -85,5 +150,8 @@ function M.cmp()
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }
 end
+
+-- oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 return M

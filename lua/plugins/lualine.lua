@@ -15,5 +15,5 @@ require('lualine').setup {
         },
         theme = "onedark"
     },
-    tabline = {}
+    tabline = {},
 }

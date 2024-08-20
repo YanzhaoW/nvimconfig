@@ -15,3 +15,8 @@ vim.api.nvim_create_autocmd("QuitPre", {
         end
     end
 })
+
+vim.api.nvim_create_user_command("InlayToggle", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, {})
+
