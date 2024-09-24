@@ -20,3 +20,13 @@ vim.api.nvim_create_user_command("InlayToggle", function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, {})
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "cpp", "c", "tex" },
+    callback = function() vim.opt_local.makeprg = 'cmake --build ./build --' end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "cmake" },
+    callback = function() vim.opt_local.makeprg = 'cmake -B ./build -S .' end,
+})
+

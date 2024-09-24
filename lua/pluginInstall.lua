@@ -25,10 +25,11 @@ require("lazy").setup({
     'tpope/vim-fugitive',
     'kyazdani42/nvim-tree.lua',
     'lewis6991/gitsigns.nvim',
+    -- { 'ojroques/nvim-osc52',           opts = { max_length = 0, silent = false, trim = false } },
 
-    { 'nvim-telescope/telescope.nvim', opts = {}, dependencies = { 'nvim-lua/plenary.nvim' }, },
+    { 'nvim-telescope/telescope.nvim', opts = {},                                                       dependencies = { 'nvim-lua/plenary.nvim' }, },
     { 'numToStr/comment.nvim',         opts = {}, },
-    { 'akinsho/git-conflict.nvim',     opts = {}, version = '*', },
+    { 'akinsho/git-conflict.nvim',     opts = {},                                                       version = '*', },
     { 'stevearc/oil.nvim',             opts = {}, },
     "folke/trouble.nvim",
 
