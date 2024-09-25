@@ -20,14 +20,29 @@ vim.opt.ignorecase = true
 vim.opt.spelloptions = 'noplainbuffer'
 vim.opt.signcolumn = 'yes'
 
-vim.g.clipboard = {
-    name = 'OSC 52',
-    copy = {
-        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-    },
-    paste = {
-        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-    },
-}
+if (os.getenv("TMUX") ~= nil) then
+    vim.g.clipboard = {
+        name = 'tmux clipboard',
+        copy = {
+            ["+"] = { 'tmux', 'load-buffer', '-' },
+            ["*"] = { 'tmux', 'load-buffer', '-' },
+        },
+        paste = {
+            ["+"] = { 'tmux', 'save-buffer', '-' },
+            ["*"] = { 'tmux', 'save-buffer', '-' },
+        },
+        cache_enabled = true,
+    }
+else
+    vim.g.clipboard = {
+        name = 'OSC 52',
+        copy = {
+            ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+        },
+        paste = {
+            ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+        },
+    }
+end
