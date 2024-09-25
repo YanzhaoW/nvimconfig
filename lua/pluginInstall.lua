@@ -13,7 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     'tpope/vim-surround',
-    'nvim-lua/lsp-status.nvim',
     'nvim-lualine/lualine.nvim',
     'navarasu/onedark.nvim',
     {
@@ -24,12 +23,12 @@ require("lazy").setup({
     "nvim-telescope/telescope-file-browser.nvim",
     'tpope/vim-fugitive',
     'kyazdani42/nvim-tree.lua',
+    { 'ahmedkhalf/project.nvim',       opts = { detection_methods = { "pattern", "lsp" } }, name = "project_nvim", },
     'lewis6991/gitsigns.nvim',
-    -- { 'ojroques/nvim-osc52',           opts = { max_length = 0, silent = false, trim = false } },
 
-    { 'nvim-telescope/telescope.nvim', opts = {},                                                       dependencies = { 'nvim-lua/plenary.nvim' }, },
+    { 'nvim-telescope/telescope.nvim', opts = {},                                       dependencies = { 'nvim-lua/plenary.nvim' }, },
     { 'numToStr/comment.nvim',         opts = {}, },
-    { 'akinsho/git-conflict.nvim',     opts = {},                                                       version = '*', },
+    { 'akinsho/git-conflict.nvim',     opts = {},                                       version = '*', },
     { 'stevearc/oil.nvim',             opts = {}, },
     "folke/trouble.nvim",
 
@@ -39,7 +38,7 @@ require("lazy").setup({
     'williamboman/mason-lspconfig.nvim',
     'nvim-lua/lsp-status.nvim',
 
-    { 'ahmedkhalf/project.nvim', config = function() require 'project_nvim'.setup {} end },
+    -- { 'ahmedkhalf/project.nvim', config = function() require 'project_nvim'.setup {} end },
     --bufferline
     {
         'romgrk/barbar.nvim',
